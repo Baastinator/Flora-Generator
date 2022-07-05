@@ -1,3 +1,17 @@
 <div class="header">
   Fantasy Flora Generator
 </div>
+<div class="main">
+  <div class="checkboxes">
+
+  </div>
+  <div class="selectors">
+  <div class="effect-selector">
+    <label for="effect-selector">Effect<br />
+      <select [(ngModel)]="effectSelector" class="effectSelector">
+        <option *ngFor="let effect of effects" value="bruh">{{effect.effect}}</option>
+      </select>
+    </label>
+  </div>
+  </div>
+</div>

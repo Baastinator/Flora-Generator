@@ -1,7 +1,7 @@
 export class Flora {
-	public type!: string;
-	public name!: string;
+  public type!: string;
+  public name!: string;
   public effect!: string;
-  public mEffect!: string;
-  public climate!: string;
+  public mEffect?: string;
+  public climate?: string;
 }

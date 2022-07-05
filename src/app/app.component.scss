@@ -1,0 +1,50 @@
+* {
+  font-family: "Helvetica Neue","Arial";
+}
+
+$headerMSide: 35px;
+$headerMVert: 35px;
+
+.header {
+  display:flex;
+  margin: $headerMVert $headerMSide $headerMVert $headerMSide;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 1px solid rgba(0,0,0,0.125);
+  font-size: 50px;
+  min-height: 100px;
+  background-color: rgb(135, 182, 226);
+  justify-content: center;
+  align-items: center;
+}
+
+$hh: 180px;
+$vph: 100vh;
+$mh: calc($vph - $hh);
+
+$msidespace: 100px;
+
+.main {
+  background-color: rgba(0,0,0,0.05);
+  min-height: $mh;
+  margin: 0 $msidespace 0 $msidespace;
+  padding: 50px;
+}
+
+.effectSelector {
+  min-height: 25px;
+  min-width: 200px;
+  border-radius: 3px;
+}
+
+.checkboxes {
+  min-height: 100px;
+  width: 100px;
+  border: 1px solid red;
+  float: left;
+}
+
+.selectors {
+  margin-left: 30px;
+  float: left;
+}
