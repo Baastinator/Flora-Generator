@@ -1,20 +1,37 @@
 import { Injectable } from '@angular/core';
 
-import effectsJson from '../../assets/effects.json';
-import { Effects } from '../models/effects.model';
+import {
+  Observable,
+  Subject,
+} from 'rxjs';
 
-@Injectable()
+import { Effect } from '../models/effects.model';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class FloraService {
-  private effectsString: string;
-  private effects: Effects[];
+  private randomiser$ = new Subject<boolean>;
 
-  public constructor() {
-    this.effectsString = JSON.stringify(effectsJson);
-    this.effects = JSON.parse(this.effectsString);
-    console.log(this.effects);
+  public get randomisers(): Function[] {
+    return [
+      (strings: string[]) => { //strings
+        const size = strings.length;
+        const ran = Math.floor(size*Math.random());
+        return strings[ran];
+      }, (effects: Effect[]) => { //effects
+        const size = effects.length;
+        const ran = Math.floor(size*Math.random());
+        return effects[ran].effect;
+      }
+    ].slice()
   }
 
-  public getEffects(): Effects[] {
-    return this.effects.slice();
+  public getRandomSub(): Observable<boolean> {
+    return this.randomiser$.asObservable();
+  }
+
+  public triggerRandom(): void {
+    this.randomiser$.next(true)
   }
 }

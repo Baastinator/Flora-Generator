@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+.grayout {
+  opacity: 0.6;
+}
+
+.randomiser button {
+  height: 25px;
+  background-color: rgb(135, 182, 226);
+  border: 1px solid rgba(110, 148, 184, 0.5);
+  color: black;
+  border-radius: 3px;
+}
+
+button {
+  cursor: pointer;
+}

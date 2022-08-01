@@ -1,0 +1,28 @@
+$h: 43px;
+
+.sSelector {
+  min-height: 25px;
+  min-width: 250px;
+  border-radius: 3px;
+}
+
+.chkbox {
+  display: flex;
+  min-height: $h;
+  width: 35px;
+  justify-content: center;
+
+  input {
+    margin-left: 3px;
+  }
+}
+
+.randomiser {
+  min-height: $h;
+  display: flex;
+  align-items: center;
+}
+
+.selector {
+  display: flex;
+}

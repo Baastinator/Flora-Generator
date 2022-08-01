@@ -4,8 +4,10 @@ import {
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { Effects } from './models/effects.model';
+import { Observable } from 'rxjs';
+
 import { FloraService } from './services/flora.service';
+import { TypeService } from './services/type.service';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +15,23 @@ import { FloraService } from './services/flora.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public effectSelector: string = '';
-  public effects: Effects[] = [];
+  public type$!: Observable<string>;
+
+  public bruh = '2'
 
   public constructor(
     private titleService: Title,
-    private floraService: FloraService
+    private floraService: FloraService,
+    private typeService: TypeService,
   ) {
     this.titleService.setTitle("Flora Generator")
   }
 
   public ngOnInit(): void {
-    this.effects = this.floraService.getEffects();
+    this.type$ = this.typeService.getType();
+  }
+
+  public RandomAll(): void {
+    this.floraService.triggerRandom()
   }
 }

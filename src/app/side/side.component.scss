@@ -1,0 +1,35 @@
+.main {
+  margin-left: 30px;
+
+  .desc {
+    h1 {
+      margin: 0;
+    }
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: row;
+
+    .tc {
+      margin-right: 30px;
+      min-width: 75px;
+
+      .tr {
+        min-height: 22px;
+
+      }
+
+      .indent {
+        padding-left: 15px;
+      }
+
+      .needtype {
+        margin-top: 10px;
+      }
+    }
+  }
+}

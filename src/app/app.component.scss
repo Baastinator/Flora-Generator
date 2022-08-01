@@ -18,11 +18,47 @@ $headerMVert: 35px;
   align-items: center;
 }
 
+.br {
+  margin-top: 30px;
+}
+
 $hh: 180px;
 $vph: 100vh;
 $mh: calc($vph - $hh);
 
 $msidespace: 100px;
+
+.bigrandom {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    background-color: rgb(135, 182, 226);
+    border: 1px solid rgba(110, 148, 184, 0.5);
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+
+  .comment {
+    font-size: 13px;
+  }
+}
+
+.left {
+  width: calc(450px - 1px);
+  float: left;
+  border-right: 1px solid rgba(0,0,0,0.125);
+}
+
+.desc {
+  float: left;
+  width: calc(100% - 450px);
+}
 
 .main {
   background-color: rgba(0,0,0,0.05);
@@ -31,20 +67,9 @@ $msidespace: 100px;
   padding: 50px;
 }
 
-.effectSelector {
-  min-height: 25px;
-  min-width: 200px;
-  border-radius: 3px;
-}
-
-.checkboxes {
-  min-height: 100px;
-  width: 100px;
-  border: 1px solid red;
-  float: left;
-}
-
-.selectors {
-  margin-left: 30px;
-  float: left;
+.toprow {
+  font-size: 11px;
+  margin-left: 78px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }

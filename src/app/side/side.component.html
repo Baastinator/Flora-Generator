@@ -1,0 +1,80 @@
+<div class="main">
+  <div class="desc">
+    <h1>Description</h1>
+  </div>
+  <div class="table">
+    <div class="tc">
+      <div class="tr"><b>Name</b></div>
+      <div class="tr"><b>Type</b></div>
+      <div class="tr"><b>Effect</b></div>
+      <div class="needtype" *ngIf="(type$ | async) as type">
+        <div class="tr" *ngIf="type !== 'O'"><b>Color</b></div>
+        <div class="tr indent" *ngIf="type === 'M'"><b>Cap</b></div>
+        <div class="tr indent" *ngIf="type === 'M'"><b>Stalk</b></div>
+        <div class="tr indent" *ngIf="type === 'F'"><b>Blossom</b></div>
+      </div>
+      <div class="tr"><b></b></div>
+      <div class="tr"><b></b></div>
+    </div>
+    <div class="tc">
+      <div class="tr"></div>
+      <div class="tr" *ngIf="(type$ | async) as type">{{type | typeToString}}</div>
+      <div class="tr" *ngIf="(effect$ | async) as effect">{{effect.effect}}</div>
+      <div class="needtype" *ngIf="(type$ | async) as type">
+        <div class="tr"></div>
+        <div class="tr" *ngIf="type === 'F'">
+          <div *ngIf="(colors$[0] | async) as color">{{color}}</div>
+        </div>
+        <div *ngFor="let n of [1,2]">
+          <div class="tr" *ngIf="type === 'M'">
+            <div *ngIf="(colors$[n] | async) as color">{{color}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="tr"></div>
+      <div class="tr"></div>
+    </div>
+  </div>
+  <!-- <table>
+    Name
+    <tr>
+      <td>
+        <b>Name</b>
+      </td>
+      <td>
+
+      </td>
+    </tr>
+    Type
+    <tr>
+      <td>
+        <b>Type</b>
+      </td>
+      <td *ngIf="(type$ | async) as type">
+        {{type | typeToString}}
+      </td>
+    </tr>
+    Effect
+    <tr>
+      <td>
+        <b>Effect</b>
+      </td>
+      <td *ngIf="(effect$ | async) as effect">
+        {{effect.effect}}
+      </td>
+    </tr>
+    Shrooms
+    <tr *ngIf="(type$ | async) as type">
+      <td><b>Cap Color</b></td>
+      <td>
+        <div>bruh</div>
+      </td>
+    </tr>
+    <tr *ngIf="(type$ | async) as type">
+      <td><b>Stalk Color</b></td>
+      <td>
+
+      </td>
+    </tr>
+  </table> -->
+</div>
