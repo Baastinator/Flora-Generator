@@ -8,23 +8,28 @@
       <div class="comment">Select Type First</div>
     </div>
     <app-type-selector> </app-type-selector>
-    <div class="toprow">LOCKED</div>
     <div *ngIf="(type$ | async) as type">
-      <div [hidden]="type == 'O'"ö>
+      <div [hidden]="type == 'O'">
+        <div class="toprow">LOCKED</div>
+
         <app-effect-selector> </app-effect-selector>
         <div class="br"></div>
-        <!-- flower -->
+
         <div *ngIf="type === 'F'">
           <app-color-selector [id]="0"></app-color-selector>
           <div class="br"></div>
         </div>
-        <!-- shroom -->
+
         <div *ngIf="type === 'M'">
           <app-color-selector [id]="1"></app-color-selector>
           <div class="br"></div>
+
           <app-color-selector [id]="2"></app-color-selector>
           <div class="br"></div>
+
         </div>
+
+        <app-range-selector></app-range-selector>
       </div>
     </div>
   </div>

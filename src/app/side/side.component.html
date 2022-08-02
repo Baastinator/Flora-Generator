@@ -7,10 +7,13 @@
       <div class="tr"><b>Name</b></div>
       <div class="tr"><b>Type</b></div>
       <div class="tr"><b>Effect</b></div>
+      <!-- type -->
       <div class="needtype" *ngIf="(type$ | async) as type">
         <div class="tr" *ngIf="type !== 'O'"><b>Color</b></div>
-        <div class="tr indent" *ngIf="type === 'M'"><b>Cap</b></div>
-        <div class="tr indent" *ngIf="type === 'M'"><b>Stalk</b></div>
+        <div *ngIf="type === 'M'">
+          <div class="tr indent"><b>Cap</b></div>
+          <div class="tr indent"><b>Stem</b></div>
+        </div>
         <div class="tr indent" *ngIf="type === 'F'"><b>Blossom</b></div>
       </div>
       <div class="tr"><b></b></div>
@@ -22,6 +25,10 @@
       <div class="tr" *ngIf="(effect$ | async) as effect">{{effect.effect}}</div>
       <div class="needtype" *ngIf="(type$ | async) as type">
         <div class="tr"></div>
+        <!-- colors$ -->
+        <!-- [0] -> Blossom (flower) -->
+        <!-- [1] -> Cap (mushroom) -->
+        <!-- [2] -> Stem (mushroom) -->
         <div class="tr" *ngIf="type === 'F'">
           <div *ngIf="(colors$[0] | async) as color">{{color}}</div>
         </div>

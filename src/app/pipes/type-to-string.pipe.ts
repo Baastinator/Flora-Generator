@@ -7,21 +7,15 @@ import {
   name: 'typeToString'
 })
 export class TypeToStringPipe implements PipeTransform {
-
   transform(value: string): string {
-    return this.TypeToString(value);
-  }
-
-  public TypeToString(T: string): string {
-    const Types: {[key: string]: string} =
+    const types: {[key: string]: string} =
     {
       "M": "Mushroom",
       "F": "Flower",
       "O": "Other"
     };
 
-    const type = Types[T];
-    if (type) return type;
-    return "I";
+    if (types[value]) return types[value];
+    return "Invalid";
   }
 }

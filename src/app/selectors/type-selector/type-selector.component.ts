@@ -14,7 +14,7 @@ import { TypeService } from '../../services/type.service';
 })
 export class TypeSelectorComponent implements OnInit, OnDestroy {
   public types: string[] = [];
-  public typeSelector: string = '';
+  public typeSelector: string = 'F';
 
 
   constructor(
@@ -24,6 +24,7 @@ export class TypeSelectorComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.types = this.typeService.getTypes();
+    this.onChange();
   }
 
   ngOnDestroy(): void {

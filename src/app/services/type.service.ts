@@ -9,12 +9,8 @@ import {
   providedIn: 'root'
 })
 export class TypeService {
-  private types: string[];
+  private types = ["M","F","O"];
   private type$ = new BehaviorSubject<string>('O');
-
-  constructor() {
-    this.types = ["M","F","O"];
-  }
 
   public getTypes(): string[] {
     return this.types.slice();
@@ -26,18 +22,5 @@ export class TypeService {
 
   public setType(T: string): void {
     this.type$.next(T);
-  }
-
-  public TypeToString(T: string): string {
-    const Types: {[key: string]: string} =
-    {
-      "M": "Mushroom",
-      "F": "Flower",
-      "O": "Other"
-    };
-
-    const type = Types[T];
-    if (type) return type;
-    return "I";
   }
 }

@@ -19,13 +19,13 @@ export class ColorsService {
     'White', 'Light Brown', 'Brown',
     'Red', 'Yellow', 'Black', 'Gray'
   ];
-  private stalkColors: string[] = [
+  private stemColors: string[] = [
     'White', 'Grey', 'Brown'
   ];
   private colors: string[][] = [
     this.blossomColor,
     this.capColors,
-    this.stalkColors,
+    this.stemColors,
   ]
 
   private color$: Subject<string>[] = [
@@ -33,8 +33,6 @@ export class ColorsService {
     new Subject<string>(),
     new Subject<string>(),
   ]
-
-  constructor() { }
 
   public getColors(n: number) {
     return this.colors[n].slice();

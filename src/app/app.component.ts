@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     this.type$ = this.typeService.getType();
   }
-
+  
   public RandomAll(): void {
     this.floraService.triggerRandom()
   }
