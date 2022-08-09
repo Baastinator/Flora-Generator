@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RangeSelectorComponent } from './range-selector.component';
+import { SizesSelectorsComponent } from './sizes-selectors.component';
 
-describe('RangeSelectorComponent', () => {
-  let component: RangeSelectorComponent;
-  let fixture: ComponentFixture<RangeSelectorComponent>;
+describe('SizesSelectorsComponent', () => {
+  let component: SizesSelectorsComponent;
+  let fixture: ComponentFixture<SizesSelectorsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RangeSelectorComponent ]
+      declarations: [ SizesSelectorsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RangeSelectorComponent);
+    fixture = TestBed.createComponent(SizesSelectorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

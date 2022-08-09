@@ -12,6 +12,7 @@ export class TypeToStringPipe implements PipeTransform {
     {
       "M": "Mushroom",
       "F": "Flower",
+      "R": "Root",
       "O": "Other"
     };
 

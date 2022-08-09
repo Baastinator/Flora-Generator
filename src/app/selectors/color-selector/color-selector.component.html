@@ -5,16 +5,14 @@
   <div class="chkbox">
     <input type="checkbox" name="bruh" id="check" [(ngModel)]="locked">
   </div>
-  <div class="efc-sel">
-    <label for="effect-selector">
-      {{id === 0 ? "Blossom " : id === 1 ? "Cap " : id === 2 ? "Stalk " : "Invalid"}}
-      Color
-      <br />
-      <select [(ngModel)]="colorSelector" class="sSelector" (change)="onChange()">
-        <option *ngFor="let color of colors" [value]="color">
-          {{color}}
-        </option>
-      </select>
-    </label>
-  </div>
+  <label for="effect-selector">
+    {{id === 0 ? "Blossom " : id === 1 ? "Cap " : id === 2 ? "Stalk " : "Invalid"}}
+    Color
+    <br />
+    <select [(ngModel)]="colorSelector" class="sSelector" (change)="onChange()">
+      <option *ngFor="let color of colors" [value]="color">
+        {{color}}
+      </option>
+    </select>
+  </label>
 </div>

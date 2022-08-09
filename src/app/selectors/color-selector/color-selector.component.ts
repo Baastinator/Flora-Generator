@@ -37,8 +37,8 @@ export class ColorSelectorComponent implements OnInit, OnDestroy {
     this.colors = this.colorsService.getColors(this.id);
 
     this.randomSub$ = this.floraService.getRandomSub();
-    this.randomSub = this.randomSub$.subscribe(() => {
-      if (!this.locked) this.randomise();
+    this.randomSub = this.randomSub$.subscribe((B: boolean) => {
+      if (!this.locked && B) this.randomise();
     })
   }
 

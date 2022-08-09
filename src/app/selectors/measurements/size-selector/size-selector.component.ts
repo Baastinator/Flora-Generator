@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
   OnDestroy,
@@ -15,12 +16,12 @@ import { FloraService } from '../../../services/flora.service';
 import { MeasurementService } from '../../../services/measurements.service';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'app-range-selector',
-  templateUrl: './range-selector.component.html',
-  styleUrls: ['../../selector.scss','./range-selector.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-size-selector',
+  templateUrl: './size-selector.component.html',
+  styleUrls: ['../../selector.scss','./size-selector.component.scss']
 })
-export class RangeSelectorComponent implements OnInit, OnDestroy {
+export class SizeSelectorComponent implements OnInit, OnDestroy {
   @Input() public Id!: number;
   public locked = false;
 
@@ -32,17 +33,16 @@ export class RangeSelectorComponent implements OnInit, OnDestroy {
 
   constructor(
     private FloraService: FloraService,
-    private MeasurementService: MeasurementService
+    private MeasurementService: MeasurementService,
+    private changeDet: ChangeDetectorRef
   ) { }
 
   public ngOnInit(): void {
-    this.measurements = this.MeasurementService.getRange();
+    this.measurements = this.MeasurementService.getSizes();
 
-    // this.onChange(0);
-    // this.onChange(1);
     this.randomSub$ = this.FloraService.getRandomSub()
-    this.randomSub = this.randomSub$.subscribe(() => {
-      if (!this.locked) this.randomise();
+    this.randomSub = this.randomSub$.subscribe((B: boolean) => {
+      if (!this.locked&&B) this.randomise();
     })
   }
 
@@ -51,9 +51,13 @@ export class RangeSelectorComponent implements OnInit, OnDestroy {
   }
 
   public randomise(): void {
-    this.selected = this.FloraService.randomisers[0](this.measurements);
+    this.selected = this.FloraService.randomisers[2](this.measurements,[30,50,10,5]);
+    this.onChange();
+
+    this.changeDet.markForCheck();
   }
 
-  public onChange(n: number): void {
-    this.
+  public onChange(): void {
+    this.MeasurementService.setMainSize(this.selected)
+  }
 }

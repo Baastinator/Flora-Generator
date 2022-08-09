@@ -7,6 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
 import { FloraService } from './services/flora.service';
+import { MeasurementService } from './services/measurements.service';
 import { TypeService } from './services/type.service';
 
 @Component({
@@ -16,6 +17,7 @@ import { TypeService } from './services/type.service';
 })
 export class AppComponent implements OnInit {
   public type$!: Observable<string>;
+  public size$!: Observable<string>;
 
   public bruh = '2'
 
@@ -23,14 +25,16 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     private floraService: FloraService,
     private typeService: TypeService,
+    private measurementService: MeasurementService
   ) {
     this.titleService.setTitle("Flora Generator")
   }
 
   public ngOnInit(): void {
     this.type$ = this.typeService.getType();
+    this.size$ = this.measurementService.getMainSize();
   }
-  
+
   public RandomAll(): void {
     this.floraService.triggerRandom()
   }

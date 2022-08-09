@@ -9,7 +9,7 @@ import {
   providedIn: 'root'
 })
 export class TypeService {
-  private types = ["M","F","O"];
+  private types = ["M","F","R","O"];
   private type$ = new BehaviorSubject<string>('O');
 
   public getTypes(): string[] {
@@ -21,6 +21,7 @@ export class TypeService {
   }
 
   public setType(T: string): void {
+    console.log('type sub ????');
     this.type$.next(T);
   }
 }

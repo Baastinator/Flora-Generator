@@ -45,8 +45,8 @@ export class SelectorComponent implements OnInit, OnDestroy {
     })
 
     this.randomSub$ = this.floraService.getRandomSub();
-    this.randomSub = this.randomSub$.subscribe(() => {
-      if (!this.locked) this.randomise();
+    this.randomSub = this.randomSub$.subscribe((B: boolean) => {
+      if (!this.locked&&B) this.randomise();
     })
 
   }

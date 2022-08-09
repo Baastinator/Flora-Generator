@@ -1,0 +1,17 @@
+<div class="selector">
+  <div class="randomiser">
+    <button (click)="randomise()">Randomise</button>
+  </div>
+  <div class="chkbox">
+    <input type="checkbox" name="bruh" id="check" [(ngModel)]="locked">
+  </div>
+  <div class="min">
+    <label for="effect-selector">Size<br />
+      <select [(ngModel)]="selected" class="sSelector" (change)="onChange()">
+        <option *ngFor="let measurement of measurements" [value]="measurement">
+          {{measurement | sizeToString}}
+        </option>
+      </select>
+    </label>
+  </div>
+</div>

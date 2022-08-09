@@ -14,7 +14,7 @@ import { TypeService } from '../../services/type.service';
 })
 export class TypeSelectorComponent implements OnInit, OnDestroy {
   public types: string[] = [];
-  public typeSelector: string = 'F';
+  public typeSelector: string = 'M';
 
 
   constructor(
@@ -31,7 +31,7 @@ export class TypeSelectorComponent implements OnInit, OnDestroy {
   }
 
   public randomise(): void {
-    this.typeSelector = this.floraService.randomisers[0](['M','F']);
+    this.typeSelector = this.floraService.randomisers[2](['F','M',"R"],[100,80,50]);
     this.onChange();
   }
 

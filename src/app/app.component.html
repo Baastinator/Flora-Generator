@@ -29,11 +29,13 @@
 
         </div>
 
-        <app-range-selector></app-range-selector>
+        <app-size-selector></app-size-selector>
+        <div class="br"></div>
+        <app-sizes-selectors *ngIf="(size$ | async) as size" [size]="size"></app-sizes-selectors>
       </div>
     </div>
   </div>
-  <div class="desc">
-    <app-side></app-side>
+  <div class="desc" *ngIf="(type$ | async) as type">
+    <app-side [type]="type"></app-side>
   </div>
 </div>

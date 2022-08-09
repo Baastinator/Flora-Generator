@@ -1,91 +1,91 @@
 [
     {
-        "type": "F",
-        "effect": "Health Regeneration"
+        "effect": "Health Regeneration",
+        "type": "F"
     },
     {
-        "type": "F",
-        "effect": "Heal"
+        "effect": "Heal",
+        "type": "F"
     },
     {
-        "type": "F",
-        "effect": "Damage"
+        "effect": "Damage",
+        "type": "F"
     },
     {
-        "type": "M",
-        "effect": "Mana Fill"
+        "effect": "Mana Fill",
+        "type": "M"
     },
     {
-        "type": "M",
-        "effect": "Mana Drain"
+        "effect": "Mana Drain",
+        "type": "M"
     },
     {
-        "type": "M",
-        "effect": "Poison"
+        "effect": "Poison",
+        "type": "M"
     },
     {
-        "type": "F",
-        "effect": "Poison"
+        "effect": "Poison",
+        "type": "F"
     },
     {
-        "type": "M",
-        "effect": "Health Regeneration"
+        "effect": "Health Regeneration",
+        "type": "M"
     },
     {
-        "type": "F",
-        "effect": "Heat Resistance"
+        "effect": "Heat Resistance",
+        "type": "F"
     },
     {
-        "type": "F",
-        "effect": "Cold Resistance"
+        "effect": "Cold Resistance",
+        "type": "F"
     },
     {
-        "type": "M",
-        "effect": "Heat Resistance"
+        "effect": "Heat Resistance",
+        "type": "M"
     },
     {
-        "type": "M",
-        "effect": "Invisibility"
+        "effect": "Invisibility",
+        "type": "M"
     },
     {
-        "type": "F",
-        "effect": "Invisibility"
+        "effect": "Invisibility",
+        "type": "F"
     },
     {
-        "type": "F",
-        "effect": "Stamina Increase"
+        "effect": "Stamina Increase",
+        "type": "F"
     },
     {
-        "type": "F",
-        "effect": "Exhaustion"
+        "effect": "Exhaustion",
+        "type": "F"
     },
     {
-        "type": "F",
-        "effect": "Darkvision"
+        "effect": "Darkvision",
+        "type": "F"
     },
     {
-        "type": "M",
-        "effect": "Transmutation"
+        "effect": "Transmutation",
+        "type": "M"
     },
     {
-        "type": "F",
-        "effect": "Transmutation"
+        "effect": "Transmutation",
+        "type": "F"
     },
     {
-        "type": "F",
-        "effect": "Strength Decrease"
+        "effect": "Strength Decrease",
+        "type": "F"
     },
     {
-        "type": "M",
-        "effect": "Strength Decrease"
+        "effect": "Strength Decrease",
+        "type": "M"
     },
     {
-        "type": "M",
-        "effect": "Strength Increase"
+        "effect": "Strength Increase",
+        "type": "M"
     },
     {
-        "type": "M",
-        "effect": "Speed Increase"
+        "effect": "Speed Increase",
+        "type": "M"
     },
     {
         "effect": "Speed Decrease",
@@ -158,5 +158,65 @@
     {
         "effect": "Psychadelic",
         "type": "M"
+    },
+    {
+        "effect": "Heal",
+        "type": "R"
+    },
+    {
+        "effect": "Health Regeneration",
+        "type": "R"
+    },
+    {
+        "effect": "Mana Drain",
+        "type": "R"
+    },
+    {
+        "effect": "Poison",
+        "type": "R"
+    },
+    {
+        "effect": "Heat Resistance",
+        "type": "R"
+    },
+    {
+        "effect": "Cold Resistance",
+        "type": "R"
+    },
+    {
+        "effect": "Invisibility ",
+        "type": "R"
+    },
+    {
+        "effect": "Blindness",
+        "type": "R"
+    },
+    {
+        "effect": "Strength Increase ",
+        "type": "R"
+    },
+    {
+        "effect": "Strength Decrease",
+        "type": "R"
+    },
+    {
+        "effect": "Speed Decrease",
+        "type": "R"
+    },
+    {
+        "effect": "Damage Shielding",
+        "type": "R"
+    },
+    {
+        "effect": "Cure Poison",
+        "type": "R"
+    },
+    {
+        "effect": "Carry Capacity Enhancement",
+        "type": "R"
+    },
+    {
+        "effect": "Paralysis",
+        "type": "R"
     }
 ]

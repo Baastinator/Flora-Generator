@@ -15,24 +15,30 @@ export class ColorsService {
     'Orange', 'Light Blue', 'Green',
     'White'
   ];
+
   private capColors: string[] = [
     'White', 'Light Brown', 'Brown',
     'Red', 'Yellow', 'Black', 'Gray'
   ];
+
   private stemColors: string[] = [
     'White', 'Grey', 'Brown'
   ];
+
+  private rootColors: string[] = this.stemColors.slice();
+
   private colors: string[][] = [
     this.blossomColor,
     this.capColors,
     this.stemColors,
-  ]
+    this.rootColors
+  ];
 
   private color$: Subject<string>[] = [
     new Subject<string>(),
     new Subject<string>(),
     new Subject<string>(),
-  ]
+  ];
 
   public getColors(n: number) {
     return this.colors[n].slice();

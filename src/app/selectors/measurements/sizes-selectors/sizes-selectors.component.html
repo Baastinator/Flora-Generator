@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="randomiser">
+    <button (click)="onRandomise()">Randomise</button>
+  </div>
+  <div class="bruh">
+    <div class="inSelector" *ngFor="let selector of selectors; let i = index">
+      <div class="chkbox">
+        <input type="checkbox" name="selector" id="selector" [(ngModel)]="locked[i]">
+      </div>
+      <label for="selector"> {{selector}}
+        <div class="input">
+          <div class="text">{{+selSizes[i] | numToInch}}</div>
+        </div>
+      </label>
+    </div>
+  </div>
+</div>

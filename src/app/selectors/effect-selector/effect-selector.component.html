@@ -5,13 +5,11 @@
   <div class="chkbox">
     <input type="checkbox" name="bruh" id="check" [(ngModel)]="locked">
   </div>
-  <div class="efc-sel">
-    <label for="effect-selector">Effect<br />
-      <select [(ngModel)]="effectSelector" class="sSelector" (change)="onChange()">
-        <option *ngFor="let effect of effects" [value]="effect.effect">
-          {{effect.effect}}
-        </option>
-      </select>
-    </label>
-  </div>
+  <label for="effect-selector">Effect<br />
+    <select [(ngModel)]="effectSelector" class="sSelector" (change)="onChange()">
+      <option *ngFor="let effect of effects" [value]="effect.effect">
+        {{effect.effect}}
+      </option>
+    </select>
+  </label>
 </div>

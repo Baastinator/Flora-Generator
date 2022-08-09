@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { SizeToStringPipe } from './pipes/size-to-string.pipe';
 import { TypeToStringPipe } from './pipes/type-to-string.pipe';
 import {
   ColorSelectorComponent,
@@ -11,8 +12,8 @@ import {
   SelectorComponent,
 } from './selectors/effect-selector/effect-selector.component';
 import {
-  RangeSelectorComponent,
-} from './selectors/measurements/range-selector/range-selector.component';
+  SizeSelectorComponent,
+} from './selectors/measurements/size-selector/size-selector.component';
 import {
   TypeSelectorComponent,
 } from './selectors/type-selector/type-selector.component';
@@ -22,7 +23,9 @@ import { FloraService } from './services/flora.service';
 import { MeasurementService } from './services/measurements.service';
 import { TypeService } from './services/type.service';
 import { SideComponent } from './side/side.component';
-import { SizeToStringPipe } from './pipes/size-to-string.pipe';
+import { SizesSelectorsComponent } from './selectors/measurements/sizes-selectors/sizes-selectors.component';
+import { NumToInchPipe } from './pipes/num-to-inch.pipe';
+import { SubtypeSelectorComponent } from './selectors/type-selector/subtype-selector/subtype-selector.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +35,11 @@ import { SizeToStringPipe } from './pipes/size-to-string.pipe';
     SideComponent,
     TypeToStringPipe,
     ColorSelectorComponent,
-    RangeSelectorComponent,
+    SizeSelectorComponent,
     SizeToStringPipe,
+    SizesSelectorsComponent,
+    NumToInchPipe,
+    SubtypeSelectorComponent,
   ],
   imports: [
     BrowserModule,

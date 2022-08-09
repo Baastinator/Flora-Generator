@@ -4,13 +4,11 @@
   </div>
   <div class="chkbox">
   </div>
-  <div class="">
-    <label for="type-selector" >Type<br />
-      <select [(ngModel)]="typeSelector" class="sSelector" (change)="onChange()">
-        <option *ngFor="let type of types" [value]="type">
-          {{type | typeToString}}
-        </option>
-      </select>
-    </label>
-  </div>
+  <label for="type-selector" >Type<br />
+    <select [(ngModel)]="typeSelector" class="sSelector" (change)="onChange()">
+      <option *ngFor="let type of types" [value]="type">
+        {{type | typeToString}}
+      </option>
+    </select>
+  </label>
 </div>
