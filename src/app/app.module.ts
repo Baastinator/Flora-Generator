@@ -30,6 +30,7 @@ import { FloraService } from './services/flora.service';
 import { MeasurementService } from './services/measurements.service';
 import { TypeService } from './services/type.service';
 import { SideComponent } from './side/side.component';
+import { NameSelectorComponent } from './selectors/name-selector/name-selector.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SideComponent } from './side/side.component';
     SizesSelectorsComponent,
     NumToInchPipe,
     SubtypeSelectorComponent,
+    NameSelectorComponent,
   ],
   imports: [
     BrowserModule,

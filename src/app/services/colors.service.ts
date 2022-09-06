@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {
-  Observable,
-  Subject,
+    BehaviorSubject,
+    Observable,
 } from 'rxjs';
 
 @Injectable({
@@ -34,11 +34,11 @@ export class ColorsService {
     this.rootColors
   ];
 
-  private color$: Subject<string>[] = [
-    new Subject<string>(),
-    new Subject<string>(),
-    new Subject<string>(),
-    new Subject<string>(),
+  private colors$: BehaviorSubject<string>[] = [
+    new BehaviorSubject<string>(''),
+    new BehaviorSubject<string>(''),
+    new BehaviorSubject<string>(''),
+    new BehaviorSubject<string>(''),
   ];
 
   public getColors(n: number) {
@@ -46,10 +46,10 @@ export class ColorsService {
   }
 
   public getColor(n: number): Observable<string> {
-    return this.color$[n].asObservable();
+    return this.colors$[n].asObservable();
   }
 
   public setColor(n: number, C: string): void {
-    this.color$[n].next(C);
+    this.colors$[n].next(C);
   }
 }

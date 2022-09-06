@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {
+    BehaviorSubject,
     Observable,
-    Subject,
 } from 'rxjs';
 
 @Injectable({
@@ -15,12 +15,12 @@ export class MeasurementService {
   // L > 30cm - 70cm long
   // XL > >70cm long
   public sizes: string[] = ['S','M','L','XL'];
-  public size$: Subject<string> = new Subject<string>();
-  public sizes$: Subject<number>[] = [
-    new Subject<number>(),
-    new Subject<number>(),
-    new Subject<number>(),
-    new Subject<number>()
+  public size$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public sizes$: BehaviorSubject<number>[] = [
+    new BehaviorSubject<number>(0),
+    new BehaviorSubject<number>(0),
+    new BehaviorSubject<number>(0),
+    new BehaviorSubject<number>(0)
   ]
 
   public getSizes(): string[] {

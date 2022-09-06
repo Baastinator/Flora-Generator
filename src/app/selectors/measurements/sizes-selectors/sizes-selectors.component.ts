@@ -22,7 +22,7 @@ import { TypeService } from '../../../services/type.service';
 })
 export class SizesSelectorsComponent implements OnInit, OnDestroy {
   @Input() size: string = '';
-  @Input() subType!: string;
+  @Input() subType: string = '';
 
   public selectors: string[] = [];
   public selSizes: string[] = [];
@@ -84,7 +84,6 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
     } else {
       this.selectors = [];
     }
-
     for (let i = 0; i < this.selectors.length; i++) {
       this.selSizes[i] = '' + 0;
       this.locked[i] = false;
@@ -98,6 +97,7 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
     const len = this.selectors.length
     const tNum = len === 3 ? 1 : len === 2 ? 2 : 0
     const root = tNum === 2
+    console.log(`subtype: ${this.subType}`)
     const sTNum = this.subType === "Fibrous" ? 0 :
       this.subType === "Taproot" ? 1 : -1
 
@@ -113,13 +113,12 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
 
     const genSize = (T: number, S: number, P: number): number => { // Mushroom
 
-      console.log(`T: ${T}; S: ${S}; P: ${P}`);
 
       const rand = (Math.floor(+Math.random() * 1000+0.5) / 1000)
 
-      const p = T !== 2 ? P : 2 * sTNum + P
+      console.log(`T: ${T}; S: ${S}; P: ${P}; p: ${P}`);
 
-      const range = ranges[T][S][p]
+      const range = ranges[T][S][P]
       console.log(range);
 
       const ranged = (range.max-range.min)*rand+range.min;
@@ -131,6 +130,7 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
         console.log('WHAT');
         console.log(`size: ${this.size}`);
 
+        console.log(`i: ${i}`);
 
         this.selSizes[i] = '' + genSize(tNum, this.measurementService.sizeToNum(this.size), (root ? 2*sTNum : 0) + i);
         this.measurementService.setSize(i,+this.selSizes[i])

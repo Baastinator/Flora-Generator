@@ -1,15 +1,5 @@
-import {
-  Component,
-  Input,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-
-import {
-  Observable,
-  Subscription,
-} from 'rxjs';
-
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { ColorsService } from '../../services/colors.service';
 import { FloraService } from '../../services/flora.service';
 
@@ -53,6 +43,8 @@ export class ColorSelectorComponent implements OnInit, OnDestroy {
 
   public onChange(): void {
     this.colorsService.setColor(this.id,this.colorSelector)
+    console.log(this.id);
+
   }
 
 }

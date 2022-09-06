@@ -23,6 +23,11 @@ $h: 43px;
   min-height: $h;
   display: flex;
   align-items: center;
+
+  button {
+    min-width: 86px;
+    min-height: calc($h - 15px);
+  }
 }
 
 .selector {

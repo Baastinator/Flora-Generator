@@ -49,22 +49,49 @@ $msidespace: 100px;
   }
 }
 
+.save {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+
+  button {
+    width: 90px;
+    height: 45px;
+    font-size: 25px;
+    border-radius: 8px;
+    background-color: rgb(135, 182, 226);
+    border: 1px solid rgba(110, 148, 184, 0.5);
+  }
+}
+
 .left {
-  width: calc(450px - 1px);
+  padding-top: 25px;
+  padding-left: 30px;
+  width: 450px;
   float: left;
-  border-right: 1px solid rgba(0,0,0,0.125);
+}
+
+.name {
+  width: 450px;
+  float: left;
+  border-left: 1px solid rgba(0,0,0,0.125);
 }
 
 .desc {
+  width: 450px;
   float: left;
-  width: calc(100% - 450px);
+  border-left: 1px solid rgba(0,0,0,0.125);
 }
+
 
 .main {
   background-color: rgba(0,0,0,0.05);
   min-height: $mh;
   margin: 0 $msidespace 0 $msidespace;
   padding: 50px;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .toprow {

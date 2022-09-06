@@ -1,9 +1,10 @@
 import {
-  Component,
-  OnDestroy,
-  OnInit,
+    Component,
+    OnDestroy,
+    OnInit,
 } from '@angular/core';
 
+import { EffectsService } from '../../services/effects.service';
 import { FloraService } from '../../services/flora.service';
 import { TypeService } from '../../services/type.service';
 
@@ -14,12 +15,13 @@ import { TypeService } from '../../services/type.service';
 })
 export class TypeSelectorComponent implements OnInit, OnDestroy {
   public types: string[] = [];
-  public typeSelector: string = 'R';
+  public typeSelector: string = 'M';
 
 
   constructor(
     private typeService: TypeService,
-    private floraService: FloraService
+    private floraService: FloraService,
+    private effectsService: EffectsService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class TypeSelectorComponent implements OnInit, OnDestroy {
 
   public onChange(): void {
     this.typeService.setType(this.typeSelector)
+    this.effectsService.setEffect({type: 'I', effect: ''})
   }
 
 }

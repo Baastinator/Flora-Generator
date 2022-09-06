@@ -34,7 +34,7 @@
           <div class="br"></div>
         </div>
 
-        <div>
+        <div *ngIf="type === 'R'">
           <app-color-selector [id]="3"></app-color-selector>
           <div class="br"></div>
         </div>
@@ -47,6 +47,32 @@
         </div>
       </div>
     </div>
+    <div class="save">
+      <button *ngIf="(type$| async) === 'F' && (effect$ | async) as effect" [disabled]="
+        effect.effect === ''
+      ">Save</button>
+      <button *ngIf="(type$| async) === 'M' && (effect$ | async) as effect" [disabled]="
+        effect.effect === '' ||
+        (colors$[1] | async) === '' ||
+        (colors$[2] | async) === '' ||
+        (size$ | async) === '' ||
+        (sizes$[0] | async) === 0 ||
+        (sizes$[1] | async) === 0 ||
+        (sizes$[2] | async) === 0 ||
+        (sizes$[3] | async) === 0
+      ">Save</button>
+      <button *ngIf="(type$| async) === 'R' && (effect$ | async) as effect" [disabled]="
+        (subType$ | async) === '' ||
+        effect.effect === '' ||
+        (colors$[0] | async) === '' ||
+        (size$ | async) === '' ||
+        (sizes$[0] | async) === 0 ||
+        (sizes$[1] | async) === 0
+      " (click)="OnSave()">Save</button>
+    </div>
+  </div>
+  <div class="name">
+    <app-name-selector></app-name-selector>
   </div>
   <div class="desc" *ngIf="(type$ | async) as type">
     <app-side [type]="type"></app-side>

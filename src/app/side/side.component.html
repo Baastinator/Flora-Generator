@@ -4,7 +4,7 @@
   </div>
   <div class="table">
     <div class="tc">
-      <div class="tr"><b>Name</b></div>
+      <div class="tr" *ngIf="type !== 'O'"><b>Name</b></div>
       <div class="tr"><b>Type</b></div>
       <div class="tr" *ngIf="type === 'R'"><b>Subtype</b></div>
 
@@ -43,18 +43,23 @@
             <div class="tr indent"><b>Blossom</b></div>
             <div class="tr doubleindent"><b>Width</b></div>
           </div>
+
+          <div *ngIf="type === 'R'">
+            <div class="tr indent"><b>Root Depth</b></div>
+            <div class="tr indent"><b>Root Width</b></div>
+          </div>
         </div>
 
       </div>
     </div>
 
     <div class="tc">
-      <div class="tr"></div>
+      <div class="tr" *ngIf="type !== 'O'"></div>
       <div class="tr">{{type | typeToString}}</div>
       <div class="tr" *ngIf="type === 'R' && (subtype$ | async) as subtype">{{subtype}}</div>
-      <div class="tr" *ngIf="type === 'R' && !(subtype$ | async)">B</div>
+      <div class="tr" *ngIf="type === 'R' && !(subtype$ | async)"></div>
       <div class="tr" *ngIf="(effect$ | async) as effect">{{effect.effect}}</div>
-      <div class="tr" *ngIf="!(effect$ | async)">D</div>
+      <div class="tr" *ngIf="!(effect$ | async)"></div>
       <div *ngIf="type === 'M' || type === 'F' || type === 'R'">
 
         <!-- Colors -->
@@ -81,7 +86,7 @@
         <div class="space">
           <div class="tr" *ngIf="(size$ | async) as size">{{size | sizeToString}}</div>
 
-          <div class="tr"></div>
+          <div class="tr" *ngIf="type !== 'R'"></div>
 
           <div *ngFor="let n of [0,1]" class="tr">
             <div *ngIf="(sizes$[n] | async) as size">
@@ -103,7 +108,6 @@
             <div class="tr"></div>
             <div class="tr" *ngIf="(sizes$[2] | async) as size">{{size | numToInch}}</div>
           </div>
-
         </div>
 
       </div>
