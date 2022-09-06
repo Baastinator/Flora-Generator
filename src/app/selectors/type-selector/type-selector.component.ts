@@ -14,7 +14,7 @@ import { TypeService } from '../../services/type.service';
 })
 export class TypeSelectorComponent implements OnInit, OnDestroy {
   public types: string[] = [];
-  public typeSelector: string = 'M';
+  public typeSelector: string = 'R';
 
 
   constructor(

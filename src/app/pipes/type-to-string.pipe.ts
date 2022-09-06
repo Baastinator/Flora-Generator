@@ -13,7 +13,7 @@ export class TypeToStringPipe implements PipeTransform {
       "M": "Mushroom",
       "F": "Flower",
       "R": "Root",
-      "O": "Other"
+      "O": "None"
     };
 
     if (types[value]) return types[value];

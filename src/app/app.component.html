@@ -4,12 +4,18 @@
 <div class="main">
   <div class="left">
     <div class="bigrandom">
-      <button (click)="RandomAll()" [disabled]="(type$ | async) === 'O'">Randomise All</button>
+      <button (click)="RandomAll()" [disabled]="(type$ | async) === 'O' || ((type$|async) === 'R' && !(subType$ | async))">Randomise All</button>
       <div class="comment">Select Type First</div>
     </div>
     <app-type-selector> </app-type-selector>
     <div *ngIf="(type$ | async) as type">
-      <div [hidden]="type == 'O'">
+
+      <div *ngIf="type === 'R'">
+        <div class="br"></div>
+        <app-subtype-selector></app-subtype-selector>
+      </div>
+
+      <div [hidden]="type == 'O' || (type === 'R' && !(subType$ | async))">
         <div class="toprow">LOCKED</div>
 
         <app-effect-selector> </app-effect-selector>
@@ -26,12 +32,19 @@
 
           <app-color-selector [id]="2"></app-color-selector>
           <div class="br"></div>
+        </div>
 
+        <div>
+          <app-color-selector [id]="3"></app-color-selector>
+          <div class="br"></div>
         </div>
 
         <app-size-selector></app-size-selector>
         <div class="br"></div>
-        <app-sizes-selectors *ngIf="(size$ | async) as size" [size]="size"></app-sizes-selectors>
+        <div *ngIf="(size$ | async) as size">
+          <app-sizes-selectors *ngIf="!(subType$ | async)" [size]="size"></app-sizes-selectors>
+          <app-sizes-selectors *ngIf="(subType$ | async) as subType" [subType]="subType" [size]="size"></app-sizes-selectors>
+        </div>
       </div>
     </div>
   </div>

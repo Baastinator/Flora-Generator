@@ -1,1 +1,14 @@
-<p>subtype-selector works!</p>
+<div class="selector">
+  <div class="randomiser">
+    <button (click)="onRandomise()">Randomise</button>
+  </div>
+  <div class="chkbox">
+  </div>
+  <label for="type-selector" >Subtype<br />
+    <select [(ngModel)]="subTypeSelector" class="sSelector" (change)="onChange()">
+      <option *ngFor="let type of subtypes" [value]="type">
+        {{type}}
+      </option>
+    </select>
+  </label>
+</div>

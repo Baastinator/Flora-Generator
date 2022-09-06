@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {
-  BehaviorSubject,
-  Observable,
+    BehaviorSubject,
+    Observable,
 } from 'rxjs';
 
 import { Effect } from '../models/effects.model';
@@ -32,7 +32,7 @@ export class FloraService {
 
         let rand = Math.floor(sum*Math.random());
 
-        for (let i = 0; i < weights.length; i++) {
+        for (let i = 0; i < weights.length; i++) {  
           const N = weights[i];
           if (rand-N < 0) return strings[i];
           rand -= N;

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {
-  Observable,
-  Subject,
+    Observable,
+    Subject,
 } from 'rxjs';
 
 @Injectable({

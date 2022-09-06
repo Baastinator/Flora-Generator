@@ -6,28 +6,39 @@
     <div class="tc">
       <div class="tr"><b>Name</b></div>
       <div class="tr"><b>Type</b></div>
-      <div *ngIf="type === 'M' || type === 'F'">
+      <div class="tr" *ngIf="type === 'R'"><b>Subtype</b></div>
+
+      <div *ngIf="type === 'M' || type === 'F' || type === 'R'">
         <div class="tr"><b>Effect</b></div>
 
-        <div class="space">
+        <!-- Colors -->
+        <div [ngClass]="type !== 'R' ? 'space' : ''">
           <div class="tr"><b>Color</b></div>
+
           <div *ngIf="type === 'M'">
             <div class="tr indent"><b>Cap</b></div>
             <div class="tr indent"><b>Stem</b></div>
           </div>
+
           <div class="tr indent" *ngIf="type === 'F'"><b>Blossom</b></div>
         </div>
 
+        <!-- Sizes -->
         <div class="space">
           <div class="tr"><b>Size</b></div>
-          <div class="tr indent"><b>Stem</b></div>
-          <div class="tr doubleindent"><b>Thickness</b></div>
-          <div class="tr doubleindent"><b>Length</b></div>
+
+          <div *ngIf="type === 'M' || type === 'F'">
+            <div class="tr indent"><b>Stem</b></div>
+            <div class="tr doubleindent"><b>Thickness</b></div>
+            <div class="tr doubleindent"><b>Length</b></div>
+          </div>
+
           <div *ngIf="type === 'M'">
             <div class="tr indent"><b>Cap</b></div>
             <div class="tr doubleindent"><b>Thickness</b></div>
             <div class="tr doubleindent"><b>Width</b></div>
           </div>
+
           <div *ngIf="type === 'F'">
             <div class="tr indent"><b>Blossom</b></div>
             <div class="tr doubleindent"><b>Width</b></div>
@@ -36,28 +47,42 @@
 
       </div>
     </div>
+
     <div class="tc">
       <div class="tr"></div>
       <div class="tr">{{type | typeToString}}</div>
+      <div class="tr" *ngIf="type === 'R' && (subtype$ | async) as subtype">{{subtype}}</div>
+      <div class="tr" *ngIf="type === 'R' && !(subtype$ | async)">B</div>
       <div class="tr" *ngIf="(effect$ | async) as effect">{{effect.effect}}</div>
-      <div *ngIf="type === 'M' || type === 'F'">
+      <div class="tr" *ngIf="!(effect$ | async)">D</div>
+      <div *ngIf="type === 'M' || type === 'F' || type === 'R'">
 
-        <div class="space">
-          <div class="tr"></div>
+        <!-- Colors -->
+        <div [ngClass]="type !== 'R' ? 'space' : ''">
+          <div class="tr" *ngIf="type === 'M' || type === 'F'"></div>
+
+          <div *ngIf="type === 'R'">
+            <div class="tr" *ngIf="(colors$[3] | async) as color">{{color}}</div>
+          </div>
+
           <div class="tr" *ngIf="type === 'F'">
             <div *ngIf="(colors$[0] | async) as color">{{color}}</div>
           </div>
+
           <div *ngIf="type === 'M'">
             <div class="tr" *ngFor="let n of [1,2]">
               <div *ngIf="(colors$[n] | async) as color">{{color}}</div>
             </div>
           </div>
+
         </div>
 
+        <!-- Size -->
         <div class="space">
           <div class="tr" *ngIf="(size$ | async) as size">{{size | sizeToString}}</div>
 
           <div class="tr"></div>
+
           <div *ngFor="let n of [0,1]" class="tr">
             <div *ngIf="(sizes$[n] | async) as size">
               {{size | numToInch}}
@@ -66,6 +91,7 @@
 
           <div *ngIf="type === 'M'">
             <div class="tr"></div>
+
             <div *ngFor="let n of [2,3]" class="tr">
               <div *ngIf="(sizes$[n] | async) as size">
                 {{size | numToInch}}

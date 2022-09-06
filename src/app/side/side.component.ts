@@ -24,6 +24,7 @@ export class SideComponent implements OnInit {
   public colors$: Observable<string>[] = [];
   public size$!: Observable<string>;
   public sizes$: Observable<number>[] = [];
+  public subtype$!: Observable<string>;
 
   constructor(
     private effectsService: EffectsService,
@@ -34,9 +35,9 @@ export class SideComponent implements OnInit {
 
   ngOnInit(): void {
     this.effect$ = this.effectsService.getEffect();
+    this.subtype$ = this.typeService.getSubType();
 
-
-    for (let n of [0,1,2]) {
+    for (let n of [0,1,2,3]) {
       this.colors$[n] = this.colorsService.getColor(n);
     }
 

@@ -38,6 +38,7 @@ export class ColorsService {
     new Subject<string>(),
     new Subject<string>(),
     new Subject<string>(),
+    new Subject<string>(),
   ];
 
   public getColors(n: number) {

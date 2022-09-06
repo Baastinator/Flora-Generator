@@ -1,13 +1,13 @@
 import {
-  Component,
-  Input,
-  OnDestroy,
-  OnInit,
+    Component,
+    Input,
+    OnDestroy,
+    OnInit,
 } from '@angular/core';
 
 import {
-  Observable,
-  Subscription,
+    Observable,
+    Subscription,
 } from 'rxjs';
 import rangeJson from 'src/assets/sizeRanges.json';
 
@@ -22,6 +22,7 @@ import { TypeService } from '../../../services/type.service';
 })
 export class SizesSelectorsComponent implements OnInit, OnDestroy {
   @Input() size: string = '';
+  @Input() subType!: string;
 
   public selectors: string[] = [];
   public selSizes: string[] = [];
@@ -46,18 +47,15 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.type$ = this.typeService.getType();
     this.typeSub = this.type$.subscribe((T: string) => {
-      console.log('type sub?');
-
       this.typeSubResponse(T);
     });
 
     this.randomSub$ = this.floraService.getRandomSub();
     this.randomSub = this.randomSub$.subscribe((B: boolean) => {
       for (let i = 0; i < this.selectors.length; i++) {
-        this.onRandomise()
+        if (!this.locked[i] && B) this.onRandomise()
       }
     })
-    this.onRandomise();
   }
 
   ngOnDestroy(): void {
@@ -65,8 +63,6 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
   }
 
   public typeSubResponse(T: string): void {
-    console.log('TYPE SUB');
-
     if (T === 'M') {
       this.selectors = [
         'Stem Width',
@@ -82,7 +78,8 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
       ];
     } else if (T === 'R') {
       this.selectors = [
-        
+        'Root Depth',
+        'Root Width'
       ];
     } else {
       this.selectors = [];
@@ -95,7 +92,17 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
   }
 
   public onRandomise(): void {
+    console.log('yeet?');
+
+
     const len = this.selectors.length
+    const tNum = len === 3 ? 1 : len === 2 ? 2 : 0
+    const root = tNum === 2
+    const sTNum = this.subType === "Fibrous" ? 0 :
+      this.subType === "Taproot" ? 1 : -1
+
+    console.log(`sTNum: ${sTNum}; subType: ${this.subType}`);
+
 
     interface range {
       min: number;
@@ -105,15 +112,27 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
     const ranges = JSON.parse(JSON.stringify(rangeJson)) as range[][][]
 
     const genSize = (T: number, S: number, P: number): number => { // Mushroom
-        const rand = (Math.floor(+Math.random() * 1000+0.5) / 1000)
-        const range = ranges[T][S][P]
-        const ranged = (range.max-range.min)*rand+range.min;
-        return ranged
+
+      console.log(`T: ${T}; S: ${S}; P: ${P}`);
+
+      const rand = (Math.floor(+Math.random() * 1000+0.5) / 1000)
+
+      const p = T !== 2 ? P : 2 * sTNum + P
+
+      const range = ranges[T][S][p]
+      console.log(range);
+
+      const ranged = (range.max-range.min)*rand+range.min;
+      return ranged
     };
 
     for (let i = 0; i < len; i++) {
       if (!this.locked[i]) {
-        this.selSizes[i] = '' + genSize(len===3?1:0, this.measurementService.sizeToNum(this.size), i);
+        console.log('WHAT');
+        console.log(`size: ${this.size}`);
+
+
+        this.selSizes[i] = '' + genSize(tNum, this.measurementService.sizeToNum(this.size), (root ? 2*sTNum : 0) + i);
         this.measurementService.setSize(i,+this.selSizes[i])
       }
     }

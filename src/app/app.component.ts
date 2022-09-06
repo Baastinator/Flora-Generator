@@ -17,6 +17,7 @@ import { TypeService } from './services/type.service';
 })
 export class AppComponent implements OnInit {
   public type$!: Observable<string>;
+  public subType$!: Observable<string>;
   public size$!: Observable<string>;
 
   public bruh = '2'
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.subType$ = this.typeService.getSubType();
     this.type$ = this.typeService.getType();
     this.size$ = this.measurementService.getMainSize();
   }

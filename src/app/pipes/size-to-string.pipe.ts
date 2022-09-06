@@ -1,6 +1,6 @@
 import {
-  Pipe,
-  PipeTransform,
+    Pipe,
+    PipeTransform,
 } from '@angular/core';
 
 @Pipe({
@@ -19,3 +19,4 @@ export class SizeToStringPipe implements PipeTransform {
     return "Invalid";
   }
 }
+
