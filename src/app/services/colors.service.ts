@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import {
-    BehaviorSubject,
-    Observable,
-} from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +43,14 @@ export class ColorsService {
 
   public getColor(n: number): Observable<string> {
     return this.colors$[n].asObservable();
+  }
+
+  public getColorValue(n: number): string {
+    return this.colors$[n].value;
+  }
+
+  public getColorLength(): number {
+    return this.colors$.length;
   }
 
   public setColor(n: number, C: string): void {

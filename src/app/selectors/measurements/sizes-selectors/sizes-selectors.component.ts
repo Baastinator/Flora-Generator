@@ -1,16 +1,6 @@
-import {
-    Component,
-    Input,
-    OnDestroy,
-    OnInit,
-} from '@angular/core';
-
-import {
-    Observable,
-    Subscription,
-} from 'rxjs';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import rangeJson from 'src/assets/sizeRanges.json';
-
 import { FloraService } from '../../../services/flora.service';
 import { MeasurementService } from '../../../services/measurements.service';
 import { TypeService } from '../../../services/type.service';
@@ -18,7 +8,7 @@ import { TypeService } from '../../../services/type.service';
 @Component({
   selector: 'app-sizes-selectors',
   templateUrl: './sizes-selectors.component.html',
-  styleUrls: ['../../selector.scss','./sizes-selectors.component.scss']
+  styleUrls: ['../../selector.scss', './sizes-selectors.component.scss']
 })
 export class SizesSelectorsComponent implements OnInit, OnDestroy {
   @Input() size: string = '';
@@ -59,7 +49,7 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.typeSub.unsubscribe();
+    this.typeSub.unsubscribe();
   }
 
   public typeSubResponse(T: string): void {
@@ -91,19 +81,13 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
   }
 
   public onRandomise(): void {
-    console.log('yeet?');
 
 
     const len = this.selectors.length
     const tNum = len === 3 ? 1 : len === 2 ? 2 : 0
     const root = tNum === 2
-    console.log(`subtype: ${this.subType}`)
     const sTNum = this.subType === "Fibrous" ? 0 :
       this.subType === "Taproot" ? 1 : -1
-
-    console.log(`sTNum: ${sTNum}; subType: ${this.subType}`);
-
-
     interface range {
       min: number;
       max: number;
@@ -112,28 +96,16 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
     const ranges = JSON.parse(JSON.stringify(rangeJson)) as range[][][]
 
     const genSize = (T: number, S: number, P: number): number => { // Mushroom
-
-
-      const rand = (Math.floor(+Math.random() * 1000+0.5) / 1000)
-
-      console.log(`T: ${T}; S: ${S}; P: ${P}; p: ${P}`);
-
+      const rand = (Math.floor(+Math.random() * 1000 + 0.5) / 1000)
       const range = ranges[T][S][P]
-      console.log(range);
-
-      const ranged = (range.max-range.min)*rand+range.min;
+      const ranged = (range.max - range.min) * rand + range.min;
       return ranged
     };
 
     for (let i = 0; i < len; i++) {
       if (!this.locked[i]) {
-        console.log('WHAT');
-        console.log(`size: ${this.size}`);
-
-        console.log(`i: ${i}`);
-
-        this.selSizes[i] = '' + genSize(tNum, this.measurementService.sizeToNum(this.size), (root ? 2*sTNum : 0) + i);
-        this.measurementService.setSize(i,+this.selSizes[i])
+        this.selSizes[i] = '' + genSize(tNum, this.measurementService.sizeToNum(this.size), (root ? 2 * sTNum : 0) + i);
+        this.measurementService.setSize(i, +this.selSizes[i])
       }
     }
 

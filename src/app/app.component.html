@@ -4,7 +4,8 @@
 <div class="main">
   <div class="left">
     <div class="bigrandom">
-      <button (click)="RandomAll()" [disabled]="(type$ | async) === 'O' || ((type$|async) === 'R' && !(subType$ | async))">Randomise All</button>
+      <button (click)="RandomAll()"
+        [disabled]="(type$ | async) === 'O' || ((type$|async) === 'R' && !(subType$ | async))">Randomise All</button>
       <div class="comment">Select Type First</div>
     </div>
     <app-type-selector> </app-type-selector>
@@ -43,14 +44,26 @@
         <div class="br"></div>
         <div *ngIf="(size$ | async) as size">
           <app-sizes-selectors *ngIf="!(subType$ | async)" [size]="size"></app-sizes-selectors>
-          <app-sizes-selectors *ngIf="(subType$ | async) as subType" [subType]="subType" [size]="size"></app-sizes-selectors>
+          <app-sizes-selectors *ngIf="(subType$ | async) as subType" [subType]="subType" [size]="size">
+          </app-sizes-selectors>
         </div>
       </div>
     </div>
     <div class="save">
       <button *ngIf="(type$| async) === 'F' && (effect$ | async) as effect" [disabled]="
-        effect.effect === ''
-      ">Save</button>
+        effect.effect === '' ||
+        (colors$[0] | async) === '' ||
+        (size$ | async) === ''||
+        (sizes$[0] | async) === 0 ||
+        (sizes$[1] | async) === 0 ||
+        (sizes$[2] | async) === 0
+      " (click)="OnSave({
+        type: type$,
+        effect: effect,
+        color: colors$,
+        size: size$,
+        sizes: sizes$
+      })">Save</button>
       <button *ngIf="(type$| async) === 'M' && (effect$ | async) as effect" [disabled]="
         effect.effect === '' ||
         (colors$[1] | async) === '' ||
@@ -60,15 +73,29 @@
         (sizes$[1] | async) === 0 ||
         (sizes$[2] | async) === 0 ||
         (sizes$[3] | async) === 0
-      ">Save</button>
+      " (click)="OnSave({
+        type: type$,
+        effect: effect,
+        color: colors$,
+        size: size$,
+        sizes: sizes$
+      })">Save</button>
+      <!-- COLORS$[0] IS CAUSING ISSUES!!!!< -->
       <button *ngIf="(type$| async) === 'R' && (effect$ | async) as effect" [disabled]="
         (subType$ | async) === '' ||
-        effect.effect === '' ||
-        (colors$[0] | async) === '' ||
+        effect.effect === ''||
+        (colors$[3] | async) === ''||
         (size$ | async) === '' ||
         (sizes$[0] | async) === 0 ||
         (sizes$[1] | async) === 0
-      " (click)="OnSave()">Save</button>
+      " (click)="OnSave({
+        type: type$,
+        subType: subType$,
+        effect: effect,
+        color: colors$,
+        size: size$,
+        sizes: sizes$
+      })">Save</button>
     </div>
   </div>
   <div class="name">

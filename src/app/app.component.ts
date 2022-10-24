@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Effect } from './models/effects.model';
 import { ColorsService } from './services/colors.service';
 import { EffectsService } from './services/effects.service';
@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
     this.titleService.setTitle("Flora Generator")
   }
 
+
   public ngOnInit(): void {
     this.subType$ = this.typeService.getSubType();
     this.type$ = this.typeService.getType();
@@ -47,21 +48,80 @@ export class AppComponent implements OnInit {
 
       this.sizes$ = [];
       (
-        T === 'F' ? [0,1,2] :
-        T === 'M' ? [0,1,2,3] :
-        T === 'R' ? [0,1] :
-        []
+        ((): number[] => {
+          switch (T) {
+            case 'F':
+              return [0, 1, 2];
+            case 'M':
+              return [0, 1, 2, 3];
+            case 'R':
+              return [0, 1];
+            default:
+              return [];
+          }
+        })()
       ).forEach((n: number) => {
         this.sizes$.push(this.measurementService.getSize(n))
       })
     })
   }
 
-  public OnSave() {
-
-  }
 
   public RandomAll(): void {
-    this.floraService.triggerRandom()
+    this.floraService.triggerRandom(true)
+    setTimeout(() => {
+      this.floraService.triggerRandom(false)
+    }, 10)
   }
+
+  public OnSave(input: Input): Output {
+    let output: Output = {
+      type: '',
+      effect: input.effect,
+      color: [],
+      size: '',
+      sizes: []
+    }
+    input.type.pipe(take(1)).subscribe((S: string) => {
+      output.type = S;
+    })
+    input.subType?.pipe(take(1)).subscribe((S: string) => {
+      output.subType = S;
+    })
+    input.color.forEach((CO: Observable<string>, n: number) => {
+      CO.pipe(take(1)).subscribe((C: string) => {
+        output.color[n] = C;
+      })
+    })
+    input.size.pipe(take(1)).subscribe((S: string) => {
+      output.size = S;
+    })
+    input.sizes.forEach((SO: Observable<number>, n: number) => {
+      SO.pipe(take(1)).subscribe((S: number) => {
+        output.sizes[n] = S;
+      })
+    })
+
+    console.log(output);
+
+    return output;
+  }
+}
+
+interface Input {
+  type: Observable<string>,
+  subType?: Observable<string>,
+  effect: Effect,
+  color: Observable<string>[],
+  size: Observable<string>,
+  sizes: Observable<number>[]
+}
+
+interface Output {
+  type: string,
+  subType?: string,
+  effect: Effect,
+  color: string[],
+  size: string,
+  sizes: number[]
 }

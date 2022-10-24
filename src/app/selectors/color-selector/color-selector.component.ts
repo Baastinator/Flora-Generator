@@ -6,7 +6,7 @@ import { FloraService } from '../../services/flora.service';
 @Component({
   selector: 'app-color-selector',
   templateUrl: './color-selector.component.html',
-  styleUrls: ['./color-selector.component.scss','../selector.scss']
+  styleUrls: ['./color-selector.component.scss', '../selector.scss']
 })
 export class ColorSelectorComponent implements OnInit, OnDestroy {
   @Input() public id!: number;
@@ -42,9 +42,6 @@ export class ColorSelectorComponent implements OnInit, OnDestroy {
   }
 
   public onChange(): void {
-    this.colorsService.setColor(this.id,this.colorSelector)
-    console.log(this.id);
-
+    this.colorsService.setColor(this.id, this.colorSelector)
   }
-
 }

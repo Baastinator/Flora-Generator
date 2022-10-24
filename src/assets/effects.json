@@ -1,222 +1,219 @@
 [
-    {
-        "effect": "Health Regeneration",
-        "type": "F"
-    },
-    {
-        "effect": "Heal",
-        "type": "F"
-    },
-    {
-        "effect": "Damage",
-        "type": "F"
-    },
-    {
-        "effect": "Mana Fill",
-        "type": "M"
-    },
-    {
-        "effect": "Mana Drain",
-        "type": "M"
-    },
-    {
-        "effect": "Poison",
-        "type": "M"
-    },
-    {
-        "effect": "Poison",
-        "type": "F"
-    },
-    {
-        "effect": "Health Regeneration",
-        "type": "M"
-    },
-    {
-        "effect": "Heat Resistance",
-        "type": "F"
-    },
-    {
-        "effect": "Cold Resistance",
-        "type": "F"
-    },
-    {
-        "effect": "Heat Resistance",
-        "type": "M"
-    },
-    {
-        "effect": "Invisibility",
-        "type": "M"
-    },
-    {
-        "effect": "Invisibility",
-        "type": "F"
-    },
-    {
-        "effect": "Stamina Increase",
-        "type": "F"
-    },
-    {
-        "effect": "Exhaustion",
-        "type": "F"
-    },
-    {
-        "effect": "Darkvision",
-        "type": "F"
-    },
-    {
-        "effect": "Transmutation",
-        "type": "M"
-    },
-    {
-        "effect": "Transmutation",
-        "type": "F"
-    },
-    {
-        "effect": "Strength Decrease",
-        "type": "F"
-    },
-    {
-        "effect": "Strength Decrease",
-        "type": "M"
-    },
-    {
-        "effect": "Strength Increase",
-        "type": "M"
-    },
-    {
-        "effect": "Speed Increase",
-        "type": "M"
-    },
-    {
-        "effect": "Speed Decrease",
-        "type": "M"
-    },
-    {
-        "effect": "Speed Decrease",
-        "type": "F"
-    },
-    {
-        "effect": "Water Breathing",
-        "type": "F"
-    },
-    {
-        "effect": "Damage Shielding",
-        "type": "M"
-    },
-    {
-        "effect": "Kills Disease",
-        "type": "M"
-    },
-    {
-        "effect": "Coagulant",
-        "type": "F"
-    },
-    {
-        "effect": "Immunoenhancer",
-        "type": "M"
-    },
-    {
-        "effect": "Immunoenhancer",
-        "type": "F"
-    },
-    {
-        "effect": "Cure Poison",
-        "type": "F"
-    },
-    {
-        "effect": "Fear",
-        "type": "F"
-    },
-    {
-        "effect": "Carry Capacity Enhancement",
-        "type": "M"
-    },
-    {
-        "effect": "Frenzy",
-        "type": "F"
-    },
-    {
-        "effect": "Frenzy",
-        "type": "M"
-    },
-    {
-        "effect": "Paralysis",
-        "type": "F"
-    },
-    {
-        "effect": "Paralysis",
-        "type": "M"
-    },
-    {
-        "effect": "Heal",
-        "type": "M"
-    },
-    {
-        "effect": "Health Regeneration",
-        "type": "M"
-    },
-    {
-        "effect": "Psychadelic",
-        "type": "M"
-    },
-    {
-        "effect": "Heal",
-        "type": "R"
-    },
-    {
-        "effect": "Health Regeneration",
-        "type": "R"
-    },
-    {
-        "effect": "Mana Drain",
-        "type": "R"
-    },
-    {
-        "effect": "Poison",
-        "type": "R"
-    },
-    {
-        "effect": "Heat Resistance",
-        "type": "R"
-    },
-    {
-        "effect": "Cold Resistance",
-        "type": "R"
-    },
-    {
-        "effect": "Invisibility ",
-        "type": "R"
-    },
-    {
-        "effect": "Blindness",
-        "type": "R"
-    },
-    {
-        "effect": "Strength Increase ",
-        "type": "R"
-    },
-    {
-        "effect": "Strength Decrease",
-        "type": "R"
-    },
-    {
-        "effect": "Speed Decrease",
-        "type": "R"
-    },
-    {
-        "effect": "Damage Shielding",
-        "type": "R"
-    },
-    {
-        "effect": "Cure Poison",
-        "type": "R"
-    },
-    {
-        "effect": "Carry Capacity Enhancement",
-        "type": "R"
-    },
-    {
-        "effect": "Paralysis",
-        "type": "R"
-    }
+  {
+    "effect": "Health Regeneration",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Heal",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Damage",
+    "types": [
+      "F"
+    ],
+    "names": [
+      "Death"
+    ]
+  },
+  {
+    "effect": "Mana Fill",
+    "types": [
+      "M"
+    ]
+  },
+  {
+    "effect": "Mana Drain",
+    "types": [
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Poison",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ],
+    "names": [
+      "Poison"
+    ]
+  },
+  {
+    "effect": "Heat Resistance",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ],
+    "names": [
+      "Ice",
+      "Cool",
+      "Snow"
+    ]
+  },
+  {
+    "effect": "Cold Resistance",
+    "types": [
+      "F",
+      "R"
+    ],
+    "names": [
+      "Flame",
+      "Fire",
+      "Heat",
+      "Hot",
+      "Magma"
+    ]
+  },
+  {
+    "effect": "Invisibility",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Stamina Increase",
+    "types": [
+      "F"
+    ]
+  },
+  {
+    "effect": "Exhaustion",
+    "types": [
+      "F"
+    ]
+  },
+  {
+    "effect": "Darkvision",
+    "types": [
+      "F"
+    ]
+  },
+  {
+    "effect": "Transmutation",
+    "types": [
+      "M",
+      "F"
+    ]
+  },
+  {
+    "effect": "Strength Decrease",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Strength Increase",
+    "types": [
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Speed Increase",
+    "types": [
+      "M"
+    ]
+  },
+  {
+    "effect": "Speed Decrease",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Water Breathing",
+    "types": [
+      "F"
+    ]
+  },
+  {
+    "effect": "Damage Shielding",
+    "types": [
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Kills Disease",
+    "types": [
+      "M"
+    ]
+  },
+  {
+    "effect": "Coagulant",
+    "types": [
+      "F"
+    ]
+  },
+  {
+    "effect": "Immunoenhancer",
+    "types": [
+      "M",
+      "F"
+    ]
+  },
+  {
+    "effect": "Cure Poison",
+    "types": [
+      "F",
+      "R"
+    ]
+  },
+  {
+    "effect": "Fear",
+    "types": [
+      "F"
+    ]
+  },
+  {
+    "effect": "Carry Capacity Enhancement",
+    "types": [
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Frenzy",
+    "types": [
+      "M",
+      "F"
+    ]
+  },
+  {
+    "effect": "Paralysis",
+    "types": [
+      "F",
+      "M",
+      "R"
+    ]
+  },
+  {
+    "effect": "Psychadelic",
+    "types": [
+      "M"
+    ]
+  },
+  {
+    "effect": "Blindness",
+    "types": [
+      "R"
+    ]
+  }
 ]

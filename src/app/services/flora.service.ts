@@ -32,7 +32,7 @@ export class FloraService {
 
         let rand = Math.floor(sum*Math.random());
 
-        for (let i = 0; i < weights.length; i++) {  
+        for (let i = 0; i < weights.length; i++) {
           const N = weights[i];
           if (rand-N < 0) return strings[i];
           rand -= N;
@@ -47,7 +47,7 @@ export class FloraService {
     return this.randomiser$.asObservable();
   }
 
-  public triggerRandom(): void {
-    this.randomiser$.next(true)
+  public triggerRandom(B: boolean): void {
+    this.randomiser$.next(B)
   }
 }

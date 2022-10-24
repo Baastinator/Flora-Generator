@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import {
-    BehaviorSubject,
-    Observable,
-} from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 import effectsJson from '../../assets/effects.json';
 import { Effect } from '../models/effects.model';
 
@@ -13,7 +8,7 @@ import { Effect } from '../models/effects.model';
 })
 export class EffectsService {
   private effects: Effect[];
-  private effect$ = new BehaviorSubject<Effect>({type: 'I', effect: ''})
+  private effect$ = new BehaviorSubject<Effect>({ types: [], effect: '', names: [] })
 
   constructor() {
     this.effects = JSON.parse(JSON.stringify(effectsJson));
@@ -35,7 +30,7 @@ export class EffectsService {
     const effects: Effect[] = [];
 
     this.effects.forEach((effect: Effect) => {
-      if (effect.type === T) effects.push(effect);
+      if (effect.types.includes(T)) effects.push(effect);
     });
     return effects.slice()
   }

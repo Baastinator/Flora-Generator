@@ -1,4 +1,6 @@
 export interface Effect {
   effect: string;
-  type: string;
+  types: string[];
+  names?: string[];
 }
+
