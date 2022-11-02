@@ -41,16 +41,24 @@ export class ColorsService {
     return this.colors[n].slice();
   }
 
-  public getColor(n: number): Observable<string> {
+  public getColorSub(n: number): Observable<string> {
     return this.colors$[n].asObservable();
   }
 
-  public getColorValue(n: number): string {
+  public getColor(n: number): string {
     return this.colors$[n].value;
   }
 
-  public getColorLength(): number {
-    return this.colors$.length;
+  public getColorArray(): string[] {
+    const output: string[] = []
+
+    this.colors$.forEach((BSS: BehaviorSubject<string>) => {
+      if (BSS.value !== "") {
+        output.push(BSS.value);
+      }
+    })
+
+    return output;
   }
 
   public setColor(n: number, C: string): void {

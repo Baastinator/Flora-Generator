@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import rangeJson from 'src/assets/sizeRanges.json';
-import { FloraService } from '../../../services/flora.service';
-import { MeasurementService } from '../../../services/measurements.service';
-import { TypeService } from '../../../services/type.service';
+import { FloraService } from '../../../../services/flora.service';
+import { MeasurementService } from '../../../../services/measurements.service';
+import { TypeService } from '../../../../services/type.service';
 
 @Component({
   selector: 'app-sizes-selectors',
@@ -35,7 +35,7 @@ export class SizesSelectorsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.type$ = this.typeService.getType();
+    this.type$ = this.typeService.getTypeSub();
     this.typeSub = this.type$.subscribe((T: string) => {
       this.typeSubResponse(T);
     });

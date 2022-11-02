@@ -1,23 +1,14 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-
-import {
-  Observable,
-  Subscription,
-} from 'rxjs';
-
-import { Effect } from '../../models/effects.model';
-import { EffectsService } from '../../services/effects.service';
-import { FloraService } from '../../services/flora.service';
-import { TypeService } from '../../services/type.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Effect } from '../../../models/effects.model';
+import { EffectsService } from '../../../services/effects.service';
+import { FloraService } from '../../../services/flora.service';
+import { TypeService } from '../../../services/type.service';
 
 @Component({
   selector: 'app-effect-selector',
   templateUrl: './effect-selector.component.html',
-  styleUrls: ['./effect-selector.component.scss','../selector.scss']
+  styleUrls: ['./effect-selector.component.scss', '../selector.scss']
 })
 export class SelectorComponent implements OnInit, OnDestroy {
   public effectSelector: string = '';
@@ -38,15 +29,15 @@ export class SelectorComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
-    this.type$ = this.typeService.getType();
+    this.type$ = this.typeService.getTypeSub();
 
     this.effectsSubscription = this.type$.subscribe((T: string) => {
-      this.effects = this.effectsService.getEffectsByType(T);
+      this.effects = this.effectsService.getAllEffectsByType(T);
     })
 
     this.randomSub$ = this.floraService.getRandomSub();
     this.randomSub = this.randomSub$.subscribe((B: boolean) => {
-      if (!this.locked&&B) this.randomise();
+      if (!this.locked && B) this.randomise();
     })
 
   }

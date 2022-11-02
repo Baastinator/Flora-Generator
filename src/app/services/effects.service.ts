@@ -14,19 +14,23 @@ export class EffectsService {
     this.effects = JSON.parse(JSON.stringify(effectsJson));
   }
 
-  public getEffects(): Effect[] {
+  public getAllEffects(): Effect[] {
     return this.effects.slice();
   }
 
-  public getEffect(): Observable<Effect> {
+  public getEffectSub(): Observable<Effect> {
     return this.effect$.asObservable();
+  }
+
+  public getEffect(): Effect {
+    return this.effect$.value;
   }
 
   public setEffect(E: Effect): void {
     this.effect$.next(E);
   }
 
-  public getEffectsByType(T: string): Effect[] {
+  public getAllEffectsByType(T: string): Effect[] {
     const effects: Effect[] = [];
 
     this.effects.forEach((effect: Effect) => {

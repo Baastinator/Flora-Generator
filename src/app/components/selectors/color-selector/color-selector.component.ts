@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { ColorsService } from '../../services/colors.service';
-import { FloraService } from '../../services/flora.service';
+import { ColorsService } from '../../../services/colors.service';
+import { FloraService } from '../../../services/flora.service';
 
 @Component({
   selector: 'app-color-selector',

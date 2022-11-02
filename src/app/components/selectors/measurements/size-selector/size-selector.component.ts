@@ -6,20 +6,15 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-
-import {
-  Observable,
-  Subscription,
-} from 'rxjs';
-
-import { FloraService } from '../../../services/flora.service';
-import { MeasurementService } from '../../../services/measurements.service';
+import { Observable, Subscription } from 'rxjs';
+import { FloraService } from '../../../../services/flora.service';
+import { MeasurementService } from '../../../../services/measurements.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-size-selector',
   templateUrl: './size-selector.component.html',
-  styleUrls: ['../../selector.scss','./size-selector.component.scss']
+  styleUrls: ['../../selector.scss', './size-selector.component.scss']
 })
 export class SizeSelectorComponent implements OnInit, OnDestroy {
   @Input() public Id!: number;
@@ -42,7 +37,7 @@ export class SizeSelectorComponent implements OnInit, OnDestroy {
 
     this.randomSub$ = this.FloraService.getRandomSub()
     this.randomSub = this.randomSub$.subscribe((B: boolean) => {
-      if (!this.locked&&B) this.randomise();
+      if (!this.locked && B) this.randomise();
     })
   }
 
@@ -51,7 +46,7 @@ export class SizeSelectorComponent implements OnInit, OnDestroy {
   }
 
   public randomise(): void {
-    this.selected = this.FloraService.randomisers[2](this.measurements,[30,50,10,5]);
+    this.selected = this.FloraService.randomisers[2](this.measurements, [30, 50, 10, 5]);
     this.onChange();
 
     this.changeDet.markForCheck();

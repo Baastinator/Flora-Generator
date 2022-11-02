@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-
-import {
-    BehaviorSubject,
-    Observable,
-} from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TypeService {
-  private types = ["M","F","R","O"];
+  private types = ["M", "F", "R", "O"];
   private type$ = new BehaviorSubject<string>('O');
   private subType$ = new BehaviorSubject<string>('');
 
@@ -17,8 +13,12 @@ export class TypeService {
     return this.types.slice();
   }
 
-  public getType(): Observable<string> {
+  public getTypeSub(): Observable<string> {
     return this.type$.asObservable();
+  }
+
+  public getType(): string {
+    return this.type$.value;
   }
 
   public setSubType(T: string): void {

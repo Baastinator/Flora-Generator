@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Observable, take } from 'rxjs';
+import typeNamesImport from '../assets/names/typenames.json';
 import { Effect } from './models/effects.model';
+import { FloraInput, FloraOutput } from './models/flora.model';
 import { ColorsService } from './services/colors.service';
 import { EffectsService } from './services/effects.service';
 import { FloraService } from './services/flora.service';
 import { MeasurementService } from './services/measurements.service';
+import { NameService } from './services/name.service';
 import { TypeService } from './services/type.service';
 
 @Component({
@@ -21,7 +24,7 @@ export class AppComponent implements OnInit {
   public size$!: Observable<string>;
   public sizes$!: Observable<number>[]
 
-  public bruh = '2'
+  private typeNames: { [key: string]: string[] };
 
   public constructor(
     private titleService: Title,
@@ -29,21 +32,27 @@ export class AppComponent implements OnInit {
     private typeService: TypeService,
     private measurementService: MeasurementService,
     private effectsService: EffectsService,
-    private colorsService: ColorsService
+    private colorsService: ColorsService,
+    private nameService: NameService
   ) {
-    this.titleService.setTitle("Flora Generator")
+    this.titleService.setTitle("Flora Generator");
+
+    const typeNamesJSON = JSON.stringify(typeNamesImport) as string;
+    this.typeNames = JSON.parse(typeNamesJSON) as { F: string[], M: string[], R: string[] }
+
+    console.table(this.typeNames)
   }
 
 
   public ngOnInit(): void {
     this.subType$ = this.typeService.getSubType();
-    this.type$ = this.typeService.getType();
-    this.size$ = this.measurementService.getMainSize();
-    this.effect$ = this.effectsService.getEffect();
+    this.type$ = this.typeService.getTypeSub();
+    this.size$ = this.measurementService.getMainSizeSub();
+    this.effect$ = this.effectsService.getEffectSub();
     this.type$.subscribe((T: string) => {
       this.colors$ = [];
       for (let n = 0; n < 4; n++) {
-        this.colors$.push(this.colorsService.getColor(n))
+        this.colors$.push(this.colorsService.getColorSub(n))
       }
 
       this.sizes$ = [];
@@ -61,7 +70,7 @@ export class AppComponent implements OnInit {
           }
         })()
       ).forEach((n: number) => {
-        this.sizes$.push(this.measurementService.getSize(n))
+        this.sizes$.push(this.measurementService.getSizeSub(n))
       })
     })
   }
@@ -74,54 +83,51 @@ export class AppComponent implements OnInit {
     }, 10)
   }
 
-  public OnSave(input: Input): Output {
-    let output: Output = {
+  public OnSave(input: FloraInput): void {
+    let output: FloraOutput = {
       type: '',
       effect: input.effect,
       color: [],
       size: '',
       sizes: []
-    }
+    };
     input.type.pipe(take(1)).subscribe((S: string) => {
       output.type = S;
-    })
+    });
     input.subType?.pipe(take(1)).subscribe((S: string) => {
       output.subType = S;
-    })
+    });
     input.color.forEach((CO: Observable<string>, n: number) => {
       CO.pipe(take(1)).subscribe((C: string) => {
         output.color[n] = C;
       })
-    })
+    });
     input.size.pipe(take(1)).subscribe((S: string) => {
       output.size = S;
-    })
+    });
     input.sizes.forEach((SO: Observable<number>, n: number) => {
       SO.pipe(take(1)).subscribe((S: number) => {
         output.sizes[n] = S;
       })
-    })
+    });
+
+    this.nameService.addSeconds(
+      ((): string[] => {
+        switch (output.type) {
+          case 'M':
+            break;
+          case 'F':
+            break;
+          case 'R':
+            break;
+        }
+        return [];
+      })()
+    )
+
 
     console.log(output);
 
-    return output;
   }
 }
 
-interface Input {
-  type: Observable<string>,
-  subType?: Observable<string>,
-  effect: Effect,
-  color: Observable<string>[],
-  size: Observable<string>,
-  sizes: Observable<number>[]
-}
-
-interface Output {
-  type: string,
-  subType?: string,
-  effect: Effect,
-  color: string[],
-  size: string,
-  sizes: number[]
-}

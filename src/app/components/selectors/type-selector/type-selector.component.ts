@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ColorsService } from '../../services/colors.service';
-import { EffectsService } from '../../services/effects.service';
-import { FloraService } from '../../services/flora.service';
-import { MeasurementService } from '../../services/measurements.service';
-import { TypeService } from '../../services/type.service';
+import { ColorsService } from '../../../services/colors.service';
+import { EffectsService } from '../../../services/effects.service';
+import { FloraService } from '../../../services/flora.service';
+import { MeasurementService } from '../../../services/measurements.service';
+import { TypeService } from '../../../services/type.service';
 
 @Component({
   selector: 'app-type-selector',

@@ -121,12 +121,18 @@
     "types": [
       "M",
       "R"
+    ],
+    "names": [
+      "Power"
     ]
   },
   {
     "effect": "Speed Increase",
     "types": [
       "M"
+    ],
+    "names": [
+      "Swift"
     ]
   },
   {
@@ -135,6 +141,9 @@
       "F",
       "M",
       "R"
+    ],
+    "names": [
+      "Sloth"
     ]
   },
   {
