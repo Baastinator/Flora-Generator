@@ -3,13 +3,19 @@
     "bloom",
     "flower",
     "weed",
-    "bellflower",
-    "ivy"
+    " Bellflower",
+    " Ivy",
+    "moss",
+    " Lily",
+    "azolla",
+    "bush",
+    " Lotus"
   ],
   "M": [
-    "Shroom"
+    "shroom",
+    "fungus"
   ],
   "R": [
-    "Root"
+    "root"
   ]
 }

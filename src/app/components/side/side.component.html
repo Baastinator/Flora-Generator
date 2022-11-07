@@ -54,7 +54,7 @@
     </div>
 
     <div class="tc">
-      <div class="tr" *ngIf="type !== 'O'"></div>
+      <div class="tr" *ngIf="type !== 'O'">{{name$ | async}}</div>
       <div class="tr">{{type | typeToString}}</div>
       <div class="tr" *ngIf="type === 'R' && (subtype$ | async) as subtype">{{subtype}}</div>
       <div class="tr" *ngIf="type === 'R' && !(subtype$ | async)"></div>

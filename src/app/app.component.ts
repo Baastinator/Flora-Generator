@@ -1,9 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Observable, take } from 'rxjs';
+
+import {
+  Observable,
+  take,
+} from 'rxjs';
+
 import typeNamesImport from '../assets/names/typenames.json';
 import { Effect } from './models/effects.model';
-import { FloraInput, FloraOutput } from './models/flora.model';
+import {
+  FloraInput,
+  FloraOutput,
+} from './models/flora.model';
 import { ColorsService } from './services/colors.service';
 import { EffectsService } from './services/effects.service';
 import { FloraService } from './services/flora.service';
@@ -22,7 +33,7 @@ export class AppComponent implements OnInit {
   public effect$!: Observable<Effect>
   public colors$!: Observable<string>[];
   public size$!: Observable<string>;
-  public sizes$!: Observable<number>[]
+  public sizes$!: Observable<number>[];
 
   private typeNames: { [key: string]: string[] };
 
@@ -111,22 +122,23 @@ export class AppComponent implements OnInit {
       })
     });
 
+    this.nameService.resetPools();
+
     this.nameService.addSeconds(
       ((): string[] => {
-        switch (output.type) {
-          case 'M':
-            break;
-          case 'F':
-            break;
-          case 'R':
-            break;
-        }
-        return [];
+        const names = this.typeNames[output.type]
+        if (!names) return [];
+        return names;
       })()
     )
 
+    if (output.effect.names) {
+      this.nameService.addFirsts(output.effect.names)
+    }
 
-    console.log(output);
+    this.nameService.listPools();
+
+    // console.log(output);
 
   }
 }

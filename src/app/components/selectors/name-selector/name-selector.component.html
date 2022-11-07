@@ -1,0 +1,10 @@
+<div class="main">
+  <button class="generate" (click)="onGenerate()">Generate</button>
+  <div class="output" *ngIf="names.length > 0">
+    <div *ngFor="let name of names; let i = index" class="nameBox" [ngClass]="{'selected': i == selectedIndex}" (click)="onSelect(i)">
+      <div class="name">{{name}}</div>
+    </div>
+  </div>
+  <div class="show" *ngIf="selectedIndex !== -1">Selection: {{names[selectedIndex]}}</div>
+  <button class="submit" *ngIf="selectedIndex !== -1" (click)="onSubmit()">Submit</button>
+</div>
